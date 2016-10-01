@@ -16,6 +16,7 @@ void loop() {
       buf = buf | data;
       PORTC = buf;
       delay(100);
+      buf = PORTC & B11110000;
       PORTC = buf;
   }
 }
