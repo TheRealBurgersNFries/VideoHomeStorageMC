@@ -1,7 +1,5 @@
 byte data;
-byte buf = PORTC;
-int play = A0;
-int 
+byte buf;
 void setup() {
   // put your setup code here, to run once:
 Serial.begin(9600);
@@ -13,9 +11,11 @@ void loop() {
       Serial.print(data,BIN); //print out command
       Serial.print("\r\n");
       data = data &  B00001111 ;
+      buf = PORTC;
       buf = buf & B11110000;
       buf = buf | data;
       PORTC = buf;
-      
+      delay(100);
+      PORTC = buf;
   }
 }
